@@ -1,0 +1,38 @@
+# Runs n8n's official verification scanner against the version of this package
+# that is published on npm. Run it manually (Actions → Scan published package →
+# Run workflow) after each release and before submitting to the n8n Creator Portal.
+# It runs on Linux because the scanner extracts the attested source with `tar`,
+# which does not work with Windows paths.
+
+name: Scan published package
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Published version to scan (leave empty for the latest)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: n8n scan-community-package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Scan
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [ -n "$VERSION" ]; then
+            npx --yes @n8n/scan-community-package "n8n-nodes-chatnorris@$VERSION"
+          else
+            npx --yes @n8n/scan-community-package n8n-nodes-chatnorris
+          fi

@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-chatnorris",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "n8n community nodes for ChatNorris: send messages to AI agents, read conversations and leads, and trigger workflows on new leads and conversations.",
 	"license": "MIT",
 	"homepage": "https://github.com/ChatNorris/n8n-nodes-chatnorris",
