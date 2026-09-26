@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Package metadata: author email is now `code@chatnorris.ai`, matching the npm maintainer account.
+
 ## 0.1.1
 
 - Documentation: README is now English only, as required for n8n community node verification.
